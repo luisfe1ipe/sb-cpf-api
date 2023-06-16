@@ -11,4 +11,7 @@ public class CPFService {
         return false;
     }
 
+    public String (String cpf){
+        return cpf;
+    }
 }
