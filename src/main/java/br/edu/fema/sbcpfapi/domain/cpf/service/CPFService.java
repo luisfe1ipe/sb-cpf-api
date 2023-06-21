@@ -1,5 +1,6 @@
 package br.edu.fema.sbcpfapi.domain.cpf.service;
 
+import br.edu.fema.sbcpfapi.domain.cpf.model.CPFResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 @Service
 public class CPFService {
 
-    public boolean validate(String cpf) {
+    public CPFResponse validate(String cpf) {
         int somaUm = 0;
         int somaDois = 0;
         int numeroDez = Integer.parseInt(cpf.substring(9, 10));
@@ -40,9 +41,14 @@ public class CPFService {
         }
 
         if (restoUm == numeroDez && restoDois == numeroOnze) {
-            return true;
+            CPFResponse resultCpf = new  CPFResponse(cpf,"CPF Valido", true);
+            System.out.println(resultCpf);
+            return resultCpf;
         } else {
-            return false;
+            String digits = String.valueOf(restoUm) + String.valueOf(restoDois);
+            CPFResponse resultCpf = new CPFResponse(cpf, "CPF Invalido", false, digits);
+            System.out.println(resultCpf);
+            return resultCpf;
         }
     }
 

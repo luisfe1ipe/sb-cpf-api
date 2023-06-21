@@ -1,5 +1,6 @@
 package br.edu.fema.sbcpfapi.controller;
 
+import br.edu.fema.sbcpfapi.domain.cpf.model.CPFResponse;
 import br.edu.fema.sbcpfapi.domain.cpf.service.CPFService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,8 @@ public class CPFController {
     private CPFService cpfService;
 
     @GetMapping("/{cpf}")
-    public Boolean cpf(@PathVariable("cpf") String cpf) {
-        final Boolean message = cpfService.validate(cpf);
-        return message;
+    public CPFResponse cpf(@PathVariable("cpf") String cpf) {
+        return cpfService.validate(cpf);
     }
 
 }
