@@ -46,6 +46,6 @@ public class CPFService {
     }
 
     public static void main(String[] args) {
-        new CPFService().validate("42225443882");
+        new CPFService().validate("00000000000");
     }
 }
