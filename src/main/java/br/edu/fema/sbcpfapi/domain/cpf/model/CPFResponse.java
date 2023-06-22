@@ -1,5 +1,8 @@
 package br.edu.fema.sbcpfapi.domain.cpf.model;
 
+import lombok.Data;
+
+@Data
 public class CPFResponse {
     private String cpf;
     private String status;
@@ -17,6 +20,10 @@ public class CPFResponse {
         this.status = status;
         this.valid = valid;
         this.digits = digits;
+    }
+
+    public boolean isValid() {
+        return valid;
     }
 
     @Override
